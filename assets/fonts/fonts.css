@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'kenvector_future';
+    src: url('kenvector_future.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kenvector_future_thin';
+    src: url('kenvector_future_thin.ttf') format('truetype');
+}

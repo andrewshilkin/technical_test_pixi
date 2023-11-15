@@ -1,0 +1,11 @@
+{
+    "root": {
+      "childs": {
+        "background": {},
+        "mainMenu": {},
+        "task01": {},
+        "task02": {},
+        "task03": {}
+      }
+    }
+}
