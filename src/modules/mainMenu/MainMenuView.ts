@@ -22,6 +22,9 @@ export class MainMenuView extends BaseView {
     public init(): void {
         this.addToLayout();
 
+        this.container.x = 100;
+        this.container.y = 20;
+
         this._button01 = this.createButton("Task_01", 0);
         this._button02 = this.createButton("Task_02", 1);
         this._button03 = this.createButton("Task_03", 2);

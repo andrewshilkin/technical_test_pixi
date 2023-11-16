@@ -5,6 +5,7 @@ export abstract class BaseAction {
 
     protected dispatcher: EventDispatcher;
     protected actions: BaseAction[];
+    protected shouldSkip: boolean = false;
 
     public get logString(): string | undefined {
         return `${this.constructor.name} executed`;
@@ -22,5 +23,9 @@ export abstract class BaseAction {
     }
 
     public abstract execute(): Promise<any>;
+
+    public skip(): void {
+        this.shouldSkip = true;
+    }
 
 }

@@ -5,15 +5,16 @@ import {UserChoiceMainMenuAction} from "../modules/mainMenu/actions/UserChoiceMa
 import {ProcessToSceneAction} from "../modules/scenes/actions/ProcessToSceneAction";
 import {GoToMainMenuAction} from "../modules/scenes/actions/GoToMainMenuAction";
 
-import {PauseAction} from "./PauseAction";
+import ModelStorage from "../core/ModelStorage";
+import {SceneModel, SceneTypes} from "../modules/scenes/SceneModel";
+import {Task01State} from "./Task01State";
+
 
 export class MainMenuState extends BaseState {
     public static ID: string = "MainMenuState";
-    private _nextState: string;
 
-    constructor(nextState: string) {
+    constructor() {
         super(MainMenuState.ID);
-        this._nextState = nextState;
     }
 
     public addActions(): BaseAction[] {
@@ -22,12 +23,17 @@ export class MainMenuState extends BaseState {
                 new GoToMainMenuAction(),
                 new UserChoiceMainMenuAction(),
                 new ProcessToSceneAction(),
-                new PauseAction()
             )
         ];
     }
 
     public getNextState(): string {
-        return this._nextState;
+        const model = ModelStorage.getModel(this, SceneModel);
+
+        switch (model.scene) {
+            case SceneTypes.TASK_01: return Task01State.ID;
+        }
+        
+        return MainMenuState.ID;
     }
 }

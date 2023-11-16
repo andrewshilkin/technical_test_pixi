@@ -7,6 +7,8 @@ class AppRenderer {
         console.log(this._app.renderer.width, this._app.renderer.height);
     }
 
+    public get application(): Application { return this._app; }
+
     public get stage(): Container {
         return this._app.stage;
     }

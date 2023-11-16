@@ -33,4 +33,8 @@ export class SerialAction extends BaseAction {
         });
     }
 
+    public skip(): void {
+        super.skip();
+        this.currentAction.skip();
+    }
 }

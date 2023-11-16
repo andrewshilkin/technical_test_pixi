@@ -9,6 +9,8 @@ export abstract class BaseState {
     protected isActive: boolean = false;
     protected mainResolve: Function;
     protected currentAction: BaseAction;
+    protected shouldSkip: boolean = false;
+
     protected _id: string;
     constructor(id: string) {
         this._id = id;
@@ -35,11 +37,15 @@ export abstract class BaseState {
     public abstract getNextState(): string;
 
     protected async execute(): Promise<void> {
-        return new Promise<void>( resolve => {
-            this.executedQueue = this.actions.concat();
-            this.executeActionFromQueue();
-            this.mainResolve = resolve;
-        });
+        if (this.isSkipped()) {
+            return Promise.resolve();
+        } else {
+            return new Promise<void>( resolve => {
+                this.executedQueue = this.actions.concat();
+                this.executeActionFromQueue();
+                this.mainResolve = resolve;
+            });
+        }
     }
 
     protected executeActionFromQueue(): void {
@@ -51,6 +57,15 @@ export abstract class BaseState {
         this.currentAction.execute().then(() => {
             this.executeActionFromQueue()
         });
+    }
+
+    public skip(): void {
+        this.shouldSkip = true;
+        this.currentAction.skip();
+    }
+
+    protected isSkipped(): boolean {
+        return false;
     }
 
 }

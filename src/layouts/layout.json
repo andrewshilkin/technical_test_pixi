@@ -1,6 +1,7 @@
 {
     "root": {
       "childs": {
+        "fps": {},
         "background": {},
         "mainMenu": {},
         "task01": {},

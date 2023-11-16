@@ -3,6 +3,7 @@ import AppRenderer from "./core/AppRenderer";
 import {AppLayoutInitializer} from "./layouts/AppLayoutInitializer";
 import {ModuleInitializer} from "./ModuleInitializer";
 import {FSMInitializer} from "./FSMInitializer";
+import "../styles/style.css";
 
 const APP_WIDTH = 1280;
 const APP_HEIGHT = 720;
@@ -33,5 +34,22 @@ export class App {
 
     public async run() {
         document.body.appendChild(this.app.view as any);
+        this.resizeCanvas();
+    }
+
+    protected resizeCanvas(): void {
+        const resize = () => {
+            this.app.renderer.resize(window.innerWidth, window.innerHeight);
+            this.app.stage.scale.set(this.calculateScale());
+        };
+
+        resize();
+    
+        window.addEventListener("resize", resize);
+    }
+    protected calculateScale(): number {
+        const scaleX = window.innerWidth / APP_WIDTH;
+        const scaleY = window.innerHeight / APP_HEIGHT;
+        return Math.min(scaleX, scaleY);
     }
 }

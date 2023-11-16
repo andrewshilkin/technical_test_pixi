@@ -39,6 +39,7 @@ export class Button extends NineSlicePlane {
         this.addEventListener("mousedown", this.onMouseDown.bind(this));
         this.addEventListener("mouseup", this.onMouseUp.bind(this));
 
+        this.addEventListener("pointerup", this.onPointerUp.bind(this));
     }
 
     protected onOver(): void {
@@ -58,6 +59,10 @@ export class Button extends NineSlicePlane {
             this._eventEmitter.emit(ButtonEvents.button_click);
         }
         this.isButtonDown = false;
+    }
+
+    protected onPointerUp(): void {
+        this._eventEmitter.emit(ButtonEvents.button_click);
     }
 
     protected update(): void {
