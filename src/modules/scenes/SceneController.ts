@@ -27,6 +27,9 @@ export class SceneController extends BaseController {
             case SceneTypes.TASK_01:
                 AppRenderer.getContainerByName("task01").visible = true;
                 break;
+            case SceneTypes.TASK_02:
+                AppRenderer.getContainerByName("task02").visible = true;
+                break;
         }
     }
 }

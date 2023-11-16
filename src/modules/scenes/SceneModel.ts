@@ -4,6 +4,7 @@ export enum SceneTypes {
     none,
     MAIN_MENU,
     TASK_01,
+    TASK_02,
 }
 export class SceneModel implements IBaseModel {
     protected _sceneType: SceneTypes = SceneTypes.none;

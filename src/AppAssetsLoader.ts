@@ -34,6 +34,10 @@ export class AppAssetsLoader {
         Assets.addBundle('common', {
             blue_button: "./assets/common/blue_button.png",
             cardBack_red: "./assets/task01/cardBack_red.png",
+            chipBlackWhite: "./assets/task02/chipBlackWhite.png",
+            chipBlue: "./assets/task02/chipBlue.png",
+            chipBlueWhite: "./assets/task02/chipBlueWhite.png",
+            chipGreen: "./assets/task02/chipGreen.png",
         });
         return Assets.loadBundle('common');
     }

@@ -30,7 +30,7 @@ export class MainMenuView extends BaseView {
         this._button03 = this.createButton("Task_03", 2);
 
         this._button01.eventEmitter.on(ButtonEvents.button_click, this.makeChoice.bind(this, SceneTypes.TASK_01));
-        // this._button02.eventEmitter.on(ButtonEvents.button_click, this.makeChoice.bind(this, SceneTypes.));
+        this._button02.eventEmitter.on(ButtonEvents.button_click, this.makeChoice.bind(this, SceneTypes.TASK_02));
         // this._button03.eventEmitter.on(ButtonEvents.button_click, this.makeChoice.bind(this, SceneTypes.));
     }
 

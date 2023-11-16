@@ -8,6 +8,7 @@ import {GoToMainMenuAction} from "../modules/scenes/actions/GoToMainMenuAction";
 import ModelStorage from "../core/ModelStorage";
 import {SceneModel, SceneTypes} from "../modules/scenes/SceneModel";
 import {Task01State} from "./Task01State";
+import {Task02State} from "./Task02State";
 
 
 export class MainMenuState extends BaseState {
@@ -32,8 +33,9 @@ export class MainMenuState extends BaseState {
 
         switch (model.scene) {
             case SceneTypes.TASK_01: return Task01State.ID;
+            case SceneTypes.TASK_02: return Task02State.ID;
         }
-        
+
         return MainMenuState.ID;
     }
 }
